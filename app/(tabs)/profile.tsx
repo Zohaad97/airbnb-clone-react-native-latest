@@ -13,7 +13,7 @@ import { useAuth, useUser } from '@clerk/clerk-expo';
 import { defaultStyles } from '@/constants/Styles';
 import { Ionicons } from '@expo/vector-icons';
 import Colors from '@/constants/Colors';
-import { Link } from 'expo-router';
+import { router } from 'expo-router';
 import * as ImagePicker from 'expo-image-picker';
 
 const Page = () => {
@@ -117,9 +117,7 @@ const Page = () => {
 
       {isSignedIn && <Button title="Log Out" onPress={() => signOut()} color={Colors.dark} />}
       {!isSignedIn && (
-        <Link href={'/(modals)/login'} asChild>
-          <Button title="Log In" color={Colors.dark} />
-        </Link>
+        <Button title="Log In" color={Colors.dark} onPress={() => router.push('/(modals)/login')} />
       )}
     </SafeAreaView>
   );
